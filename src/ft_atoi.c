@@ -10,7 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+int	ft_isspace(int c)
+{
+	return (c == ' ' || (c >= 0x09 && c <= 0x0d));
+}
+
+int	ft_isdigit(int ch)
+{
+	if (ch >= '0' && ch <= '9')
+		return (ch);
+	return (0);
+}
+
 
 int	check_neg(char c)
 {

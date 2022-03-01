@@ -1,11 +1,34 @@
 #include "philosofers.h"
 
+void	init_phil(t_philosofs *ph_main, t_phil *phil)
+{
+	int i;
+
+	i = -1;
+	while (++i < ph_main->num)
+	{
+		phil[i].id = i;
+		phil[i].dead = 0;
+		phil[i].iter_num = 0;
+		phil[i].thread_start = 0;
+		phil[i].meal = 0;
+		phil[i].ph_main = ph_main;
+		phil[i].lf = &ph_main->fork[i];
+		phil[i].rf = 0;
+	}
+}
+
 int	philosofers(t_philosofs *ph_main)
 {
 	t_phil  *phil;
 	phil = (t_phil *) malloc(sizeof(t_phil) * ph_main->num);
-	if (!phil || init_phil(ph_main, phil))
+	if (!phil)
 		return (EXIT_FAILURE);
+	init_phil(ph_main, phil);
+	if (init_thread(ph_main, phil))
+		return (EXIT_FAILURE);
+	check_thread(ph_main, phil);
+	free_all(ph_main, phil);
 }
 
 int	init_mutex(t_philosofs *ph_main)
@@ -61,5 +84,7 @@ int main(int argc, char **argv)
 
     if ((argc != 5 && argc != 6) || init(ph_main, argv))
         return (error("Error: invalid argument\n", ph_main, 0 ,1));
-	if ()
+	if (philosofers(ph_main))
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
