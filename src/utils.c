@@ -24,7 +24,7 @@ void	print_action(t_phil *p, char *action)
 		return ;
 	}
 	printf("%ldms %d %s\n", time_now() - p->thread_start,
-		   p->id, action);
+		   p->id + 1, action);
 	pthread_mutex_unlock(p->ph_main->death);
 }
 void	free_all(t_philosofs *ph_main, t_phil * phil)

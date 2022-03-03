@@ -29,6 +29,7 @@ int	philosofers(t_philosofs *ph_main)
 		return (EXIT_FAILURE);
 	check_thread(ph_main, phil);
 	free_all(ph_main, phil);
+	return (0);
 }
 
 int	init_mutex(t_philosofs *ph_main)
@@ -80,11 +81,11 @@ int init(t_philosofs *ph_main, char **argv)
 
 int main(int argc, char **argv)
 {
-    t_philosofs *ph_main;
+    t_philosofs ph_main;
 
-    if ((argc != 5 && argc != 6) || init(ph_main, argv))
-        return (error("Error: invalid argument\n", ph_main, 0 ,1));
-	if (philosofers(ph_main))
+    if ((argc != 5 && argc != 6) || init(&ph_main, argv))
+        return (error("Error: invalid argument\n", &ph_main, 0 ,1));
+	if (philosofers(&ph_main))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
