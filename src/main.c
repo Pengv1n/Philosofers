@@ -21,6 +21,7 @@ void	init_phil(t_philosofs *ph_main, t_phil *phil)
 int	philosofers(t_philosofs *ph_main)
 {
 	t_phil  *phil;
+
 	phil = (t_phil *) malloc(sizeof(t_phil) * ph_main->num);
 	if (!phil)
 		return (EXIT_FAILURE);
@@ -74,9 +75,9 @@ int init(t_philosofs *ph_main, char **argv)
 	}
 	if (ph_main->num > 0)
 		mutex = init_mutex(ph_main);
-	return (mutex || ph_main->num < 1 || ph_main->t2s <= 0 ||
-		ph_main->t2e <= 0 || ph_main->t2d <= 0 ||
-		ph_main->max_iter == 0);
+	return (mutex || ph_main->num < 1 || ph_main->t2s < 1 ||
+		ph_main->t2e < 1 || ph_main->t2d < 1 ||
+		!ph_main->max_iter);
 }
 
 int main(int argc, char **argv)

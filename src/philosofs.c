@@ -22,7 +22,7 @@ int	check_death(t_phil *ph)
 
 int check_meal(t_phil *ph, int i)
 {
-	if (ph->ph_main->check_meal && i == ph->ph_main->num -1
+	if (ph->ph_main->check_meal && i == (ph->ph_main->num - 1)
 		&& ph->iter_num == ph->ph_main->max_iter)
 		return (ft_usleep(300));
 	return (0);
