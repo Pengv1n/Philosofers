@@ -71,7 +71,7 @@ int	init(t_philosofs *ph_main, char **argv)
 {
 	int	mutex;
 
-	mutex = -1;
+	mutex = 1;
 	ph_main->num = ft_atoi(argv[1]);
 	ph_main->t2d = ft_atoi(argv[2]);
 	ph_main->t2e = ft_atoi(argv[3]);

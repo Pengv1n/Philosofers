@@ -26,6 +26,6 @@ int	ft_usleep(long int time)
 
 	start = time_now();
 	while ((time_now() - start) < time)
-		usleep(150);
+		usleep(100);
 	return (1);
 }

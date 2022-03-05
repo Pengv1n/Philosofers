@@ -40,8 +40,8 @@ void	*thread_func(void *ph)
 	p = (t_phil *)ph;
 	while (!p->ph_main->ready)
 		continue ;
-	if (p->id)
-		ft_usleep(p->ph_main->t2e * 0.9 + 1);
+	if (p->id & 1)
+		ft_usleep(p->ph_main->t2e * 0.5);
 	while (!p->ph_main->over)
 	{
 		ph_eat(p);
